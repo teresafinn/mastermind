@@ -7,7 +7,9 @@ class ValidateInput
   end
 
   def validate_length(input)
-    if input.length > 4
+    if input == "q"
+      @messages.quit
+    elsif input.length > 4
       @messages.too_long
     elsif input.length < 4
       @messages.too_short

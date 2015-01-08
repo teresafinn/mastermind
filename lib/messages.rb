@@ -1,15 +1,17 @@
+require 'colorize'
+
 class Messages
 
   def welcome
-    "Welcome to MASTERMIND! \n Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    "Welcome to "+ "M".colorize(:red)+"A".colorize(:green)+"S".colorize(:blue)+"T".colorize(:yellow)+"E".colorize(:red)+"R".colorize(:green)+"M".colorize(:blue)+"I".colorize(:yellow)+"N".colorize(:red)+"D".colorize(:green)+"!".colorize(:blue)+" \n Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
 
   def play_begins
-    "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game. \n What's your guess?"
+    "I have generated a beginner sequence with four elements made up of: " + "(r)ed, ".colorize(:red) + "(g)reen, ".colorize(:green) +"(b)lue, ".colorize(:blue) + "and " + "(y)ellow. ".colorize(:yellow) + "Use (q)uit at any time to end the game. \n What's your guess?"
   end
 
   def instructions
-    "The computer will generate a secret code using a combination of four different colored pegs (red, green, blue, and yellow). Your goal is to guess the secret combination with as few guesses as possible. Once you begin the game, enter your first guess. The computer will give you feedback regarding correct color and position guesses. Continue guessing until you decipher the secret!"
+    "The computer will generate a secret code using a combination of four different colored pegs ("+"red".colorize(:red)+", "+"green".colorize(:green)+", "+"blue".colorize(:blue)+", "+"and "+ "yellow".colorize(:yellow)+"). Your goal is to guess the secret combination with as few guesses as possible. Once you begin the game, enter your first guess. The computer will give you feedback regarding correct color and position guesses. Continue guessing until you decipher the secret!"
   end
 
   def quit
@@ -41,8 +43,7 @@ class Messages
   end
 
   def try_again(input, color, position, guess_count)
-    "#{input} has #{color + position} of the correct elements with #{position} in the correct positions. \n You've taken #{guess_count} guess."
+    "#{input} has #{color + position} of the correct elements with #{position} in the correct positions. \n You've taken #{guess_count} #{(guess_count > 1) ? "guesses" : "guess"}."
   end
-
 
 end

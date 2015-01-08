@@ -43,14 +43,19 @@ class Mastermind
     color = @validate_guess.correct_color(input.split(""))
 
     if position == 4
+      game_winner(input)
+    else
+      puts @messages.try_again(input, color, position, @guess_count)
+    end
+  end
+
+  def game_winner(input)
       @end_time = Time.new
       seconds = Time.at(@end_time-@start_time).utc.strftime("%S")
       minutes = Time.at(@end_time-@start_time).utc.strftime("%M")
       puts @messages.win(input, @guess_count, seconds, minutes)
       @game_started = false
-    else
-      puts @messages.try_again(input, color, position, @guess_count)
-    end
+      @guess_count = 0
   end
 
 
@@ -63,17 +68,21 @@ class Mastermind
         puts errors
       end
     else
-      case
-      when input == "i"
-        puts @messages.instructions
-      when input == "q"
-        puts @messages.quit
-      when input == "p"
-        puts @messages.play_begins
-        start_game
-      else
-        puts @messages.input_options
-      end
+      menu_report(input)
+    end
+  end
+
+  def menu_report(input)
+    case
+    when input == "i"
+      puts @messages.instructions
+    when input == "q"
+      puts @messages.quit
+    when input == "p"
+      puts @messages.play_begins
+      start_game
+    else
+      puts @messages.input_options
     end
   end
 
