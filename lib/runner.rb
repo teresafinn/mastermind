@@ -11,5 +11,5 @@ mastermind = Mastermind.new
 while input != "q"
   print "> "
   input = gets.chomp
-  mastermind.execute(input)
+  puts mastermind.execute(input)
 end
