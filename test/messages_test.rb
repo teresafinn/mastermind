@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/messages'
+require_relative '../lib/messages'
 
 class MessagesTest < Minitest::Test
   

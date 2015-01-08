@@ -1,5 +1,5 @@
-require './lib/mastermind'
-require './lib/messages'
+require_relative 'mastermind'
+require_relative 'messages'
 
 @messages = Messages.new
 

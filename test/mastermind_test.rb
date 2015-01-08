@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/mastermind'
+require_relative '../lib/mastermind'
 
 class MastermindTest < Minitest::Test
 
@@ -24,6 +24,8 @@ class MastermindTest < Minitest::Test
 
   def test_game_keeps_count
     input = "rrrr"
+    assert_equal 0, @mm.guess_count
+
     @mm.play(input)
     @mm.play(input)
     @mm.play(input)
@@ -37,7 +39,7 @@ class MastermindTest < Minitest::Test
     assert_equal false, @mm.game_started
   end
 
-  def test_game_count_resets_on_new_game
+  def test_guess_count_resets_on_new_game
     @mm.start_game
     input = "rrrr"
     @mm.play(input)

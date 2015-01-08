@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/mastermind'
-require './lib/validate_guess'
+require_relative '../lib/mastermind'
+require_relative '../lib/validate_guess'
 
 class ValidateGuessTest < Minitest::Test
   

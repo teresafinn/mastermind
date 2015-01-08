@@ -1,4 +1,4 @@
-require './lib/messages'
+require_relative 'messages'
 
 class ValidateInput
 
@@ -30,7 +30,6 @@ class ValidateInput
       @messages.invalid_input
     else
       nil
-      #need to put in method to continue guessing
     end
   end
 

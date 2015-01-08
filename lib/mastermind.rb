@@ -1,6 +1,6 @@
-require './lib/validate_input'
-require './lib/validate_guess'
-require './lib/messages'
+require_relative 'validate_input'
+require_relative 'validate_guess'
+require_relative 'messages'
 
 class Mastermind
 
@@ -12,9 +12,9 @@ class Mastermind
     @validate_guess = ValidateGuess.new(secret_array)
     @messages = Messages.new
     @game_started = false
+    @guess_count = 0
     @start_time = nil
     @end_time = nil
-    @guess_count = 0
   end
 
   def create_secret
@@ -37,26 +37,6 @@ class Mastermind
     @guess_count = 0
     @validate_guess.overwrite_secret(create_secret)
     @start_time = Time.new
-  end
-
-  def play(input)
-    @guess_count += 1
-    position = @validate_guess.correct_position(input.split(""))
-    color = @validate_guess.correct_color(input.split(""))
-
-    if position == 4
-      game_winner(input)
-    else
-      @messages.try_again(input, color, position, @guess_count)
-    end
-  end
-
-  def game_winner(input)
-    @end_time = Time.new
-    seconds = Time.at(@end_time-@start_time).utc.strftime("%S")
-    minutes = Time.at(@end_time-@start_time).utc.strftime("%M")
-    @game_started = false
-    @messages.win(input, @guess_count, seconds, minutes)
   end
 
   def execute(input)
@@ -88,6 +68,26 @@ class Mastermind
     else
       @messages.input_options
     end
+  end
+
+  def play(input)
+    @guess_count += 1
+    position = @validate_guess.correct_position(input.split(""))
+    color = @validate_guess.correct_color(input.split(""))
+
+    if position == 4
+      game_winner(input)
+    else
+      @messages.try_again(input, color, position, @guess_count)
+    end
+  end
+
+  def game_winner(input)
+    @end_time = Time.new
+    seconds = Time.at(@end_time-@start_time).utc.strftime("%S")
+    minutes = Time.at(@end_time-@start_time).utc.strftime("%M")
+    @game_started = false
+    @messages.win(input, @guess_count, seconds, minutes)
   end
 
 end

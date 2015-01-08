@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/validate_input'
+require_relative '../lib/validate_input'
 
 class ValidateInputTest < Minitest::Test
   
