@@ -18,7 +18,7 @@ I Learned How to...
 ------------
 - Design an object-oriented program and encapsulate code
 - Use TDD with Minitest to guide program development
-- Use a variety of enumerable methods including uniq, map, and each
+- Use a variety of enumerable methods including map, zip, reject, and each
 - Code a command-line interface game that accepts input from users
 
 
